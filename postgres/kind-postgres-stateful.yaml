@@ -1,0 +1,46 @@
+apiVersion: apps/v1          # Fix: Capitalized V
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: production
+spec:
+  serviceName: "postgres"
+  replicas: 1
+  selector:
+    matchLabels:             
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:                   
+      containers:
+      - name: postgres
+        image: postgres:14
+        env:
+        - name: DATABASE_NAME
+          valueFrom:         
+            configMapKeyRef:
+              name: pg_config
+              key: DATABASE_NAME
+
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: pg_config
+              key: DATABASE_PORT
+
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: pg_config
+              key: DATABASE_PASSWORD
+
+        volumeMounts:
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+
+      volumes:               
+      - name: postgres-data   
+        persistentVolumeClaim:
+          claimName: postgres-pv
