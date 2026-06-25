@@ -26,56 +26,56 @@ spec:
          env:
           - name: DATABASE_URL
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: DATABASE_URL
 
           - name: FRONTEND_URL
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: FRONTEND_URL
 
           - name: PORT
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: PORT
 
           - name: JWT_EXPIRE_DAYS
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: JWT_EXPIRE_DAYS
 
           - name: JWT_SECRET
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: JWT_SECRET
 
           - name: AWS_REGION
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: AWS_REGION
 
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: AWS_SECRET_ACCESS_KEY
 
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: AWS_ACCESS_KEY_ID
 
 
           - name: S3_BUCKET_NAME
             valueFrom:
-               configMapKeyRef:
+               secretKeyRef:
                   name: backend-secret
                   key: S3_BUCKET_NAME
 
