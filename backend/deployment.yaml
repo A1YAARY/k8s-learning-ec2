@@ -33,4 +33,4 @@ spec:
              memory: "256Mi"
 
       imagePullSecrets:
-        - name: dockerSecret 
+        - name: docker-secret 
