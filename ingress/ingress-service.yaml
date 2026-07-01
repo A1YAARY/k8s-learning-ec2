@@ -3,17 +3,9 @@ kind: Ingress
 metadata:
   name: space-bin
   namespace: production
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 80
+  defaultBackend:
+    service:
+      name: backend-service
+      port:
+        number: 80
