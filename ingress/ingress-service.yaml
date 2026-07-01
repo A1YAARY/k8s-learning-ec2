@@ -4,6 +4,8 @@ metadata:
   name: space-bin
   namespace: production
 spec:
+  ingressClassName: nginx
+
   defaultBackend:
     service:
       name: backend-service
